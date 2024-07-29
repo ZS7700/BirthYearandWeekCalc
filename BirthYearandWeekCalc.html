@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year and Week Calculator
+    </title>
+</head>
+<body>
+    <div class="container">
+        <h1>Birthdate Calculator</h1>
+        <label for="age">Enter your age:</label>
+        <input type="date" id="age" min="0">
+        <button onclick="calculateBirthdate()">Calculate</button>
+        <p id="output"></p>
+    </div>
+    
+</body>
+  <script>
+        function calculateBirthdate() {
+            const birthdateInput = document.getElementById('age').value;
+            const inputYear = new Date(birthdateInput);
+
+            const currentDate = new Date();
+
+            const diffTime = Math.abs(currentDate - inputYear);
+            console.log(diffTime);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            console.log(diffDays);
+            const diffYear = Math.floor(diffDays / 365)
+            console.log(diffYear);
+            const leftWeeks = Math.floor((diffDays % 365) / 7)
+            console.log(leftWeeks);
+            document.getElementById('output').textContent = "y" + diffYear + "w" + leftWeeks;
+        }
+  </script>
+</html>
